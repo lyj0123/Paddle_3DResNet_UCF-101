@@ -1,0 +1,36 @@
+[MODEL]
+name = "resnet"
+format = "pkl"
+num_classes = 101
+seg_num = 1
+seglen = 16
+image_mean = [0.485, 0.456, 0.406]
+image_std = [0.229, 0.224, 0.225]
+num_layers = 50
+
+[TRAIN]
+epoch = 1
+short_size = 240
+target_size = 112
+num_reader_threads = 1
+buf_size = 1024
+
+batch_size = 128
+use_gpu = True
+num_gpus = 1
+filelist = "./lyj/train.list"
+learning_rate = 0.01
+learning_rate_decay = 0.1
+l2_weight_decay = 1e-4
+momentum = 0.9
+total_videos = 80
+
+[VALID]
+seg_num = 7
+short_size = 240
+target_size = 112
+num_reader_threads = 1
+buf_size = 1024
+batch_size = 10
+filelist = "./lyj/test.list"
+
