@@ -49,29 +49,28 @@ Final loss: [1.8691069]
 
 # 下面是在 Notebook 中执行的所有代码：
 
-## 1. 解压数据集
+### 1. 解压数据集
 !unzip -q -o /home/aistudio/data/data11460/UCF-101.zip -d data
 print("数据集解压完成")
 
-## 2. 将视频进行解压，分解为一张张的图片，存储在对应的_jpg文件夹下
-## 源路径 data/data/UCF-101     目标路径  lyj/UCF-101_jpg
+### 2. 将视频进行解压，分解为一张张的图片，存储在对应的_jpg文件夹下。源路径 data/data/UCF-101     目标路径  lyj/UCF-101_jpg
 !python avi2jpg.py
 
-## 3. 根据 trainlist01.txt 和 testlist01.txt   划分 训练集和测试集 ,  并生成对应的pkl文件(pkl文件很小，只是记录了名称)
-## pkl 文件中存储的每一条记录，记录的是图片的路径:    视频类名/视频名/图片名
+### 3. 根据 trainlist01.txt 和 testlist01.txt   划分 训练集和测试集 ,  并生成对应的pkl文件(pkl文件很小，只是记录了名称)。pkl 文件中存储的每一条记录，记录的是图片的路径:    视频类名/视频名/图片名
+
 !python jpg2pkl.py
 
-## 4. 针对指定的pkl文件夹(训练、测试) ,   生成数据列表:train.list、test.list
+### 4. 针对指定的pkl文件夹(训练、测试) ,   生成数据列表:train.list、test.list
 !python data_list_gener.py
 
-## 5. 执行训练过程
+### 5. 执行训练过程
 !python train.py --use_gpu True --epoch 65
 
-## 6. 执行测试过程
+### 6. 执行测试过程
 !python test.py --weights 'checkpoints_models/resnet_model' --use_gpu True 
 
-
-## 下面是10 次迭代测试的结果展示：
+# 测试集输出结果展示
+### 下面是10 次迭代测试的结果展示：
 
 eval.py 中的参数 args :  Namespace(batch_size=1, config='configs/resnet.txt', filelist=None, infer_topk=1, log_interval=1, model_name='resnet', save_dir='checkpoints_models', 
 use_gpu=True, weights='checkpoints_models/resnet_model')
@@ -153,7 +152,7 @@ W0905 19:17:46.182003  7921 device_context.cc:260] device: 0, cuDNN Version: 7.3
 
 验证集准确率为:0.015331747010350227
 
-## 下面是65次迭代输出结果展示：
+### 下面是65次迭代输出结果展示：
 
 eval.py 中的参数 args :  Namespace(batch_size=1, config='configs/resnet.txt', filelist=None, infer_topk=1, log_interval=1, model_name='resnet', 
 
