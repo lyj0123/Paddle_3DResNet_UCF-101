@@ -1,1 +1,4 @@
 引用了 Paddle 的库
+
+课程来源：百度的论文复现训练营。
+https://aistudio.baidu.com/aistudio/education/group/info/1340
